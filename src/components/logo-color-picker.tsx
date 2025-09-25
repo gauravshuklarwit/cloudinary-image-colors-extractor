@@ -1,6 +1,8 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
+
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -22,7 +24,10 @@ export default function LogoColorPicker() {
     const formData = new FormData();
     formData.append("image", file);
 
-    const res = await fetch("/api/extract-colors", { method: "POST", body: formData });
+    const res = await fetch("/api/extract-colors", {
+      method: "POST",
+      body: formData,
+    });
     const data = await res.json();
     setColors(data.colors || []);
     setLoading(false);
@@ -34,7 +39,19 @@ export default function LogoColorPicker() {
         <CardTitle>Upload Logo to Extract Colors</CardTitle>
       </CardHeader>
       <CardContent className="space-y-4">
-        <Input type="file" accept="image/*" onChange={(e) => setFile(e.target.files?.[0] ?? null)} />
+        {file && (
+          <Image
+            src={URL.createObjectURL(file)}
+            alt="Uploaded Logo"
+            width={200}
+            height={200}
+          />
+        )}
+        <Input
+          type="file"
+          accept="image/*"
+          onChange={(e) => setFile(e.target.files?.[0] ?? null)}
+        />
         <Button onClick={handleUpload} disabled={loading}>
           {loading ? "Extracting..." : "Get Palette"}
         </Button>
