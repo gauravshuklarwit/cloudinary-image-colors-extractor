@@ -12,6 +12,7 @@ interface CloudinaryResourceResponse {
 }
 
 const CLOUDINARY_CLOUD_NAME = process.env.CLOUDINARY_CLOUD_NAME!;
+const CLOUDINARY_UPLOAD_PRESET = process.env.CLOUDINARY_UPLOAD_PRESET!;
 const CLOUDINARY_API_KEY = process.env.CLOUDINARY_API_KEY!;
 const CLOUDINARY_API_SECRET = process.env.CLOUDINARY_API_SECRET!;
 
@@ -27,7 +28,7 @@ export async function POST(req: NextRequest) {
     // Prepare data for the initial upload
     const uploadFormData = new FormData();
     uploadFormData.append("file", file);
-    uploadFormData.append("upload_preset", "alamo Tees"); // 💡 Use an unsigned preset for simplicity and security on the client-side/serverless env
+    uploadFormData.append("upload_preset", CLOUDINARY_UPLOAD_PRESET); // 💡 Use an unsigned preset for simplicity and security on the client-side/serverless env
 
     // 1. Upload the image to Cloudinary
     const uploadRes = await fetch(
