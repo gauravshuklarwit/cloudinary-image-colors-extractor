@@ -6,7 +6,7 @@ export default function Home() {
     <main>
       <div className="container mx-auto px-5">
         <div className="space-y-3 text-center my-10">
-          <h1 className="text-3xl font-bold">Image Color Extractor</h1>
+          <h1 className="text-3xl font-bold">Image Colors Extractor</h1>
           <p className="text-sm text-pretty">
             Click on one of the solutions below:
           </p>
