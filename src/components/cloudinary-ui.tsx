@@ -12,7 +12,7 @@ type Color = {
   percentage: number;
 };
 
-export default function LogoColorPicker() {
+export default function CloudinaryUI() {
   const [file, setFile] = useState<File | null>(null);
   const [colors, setColors] = useState<Color[]>([]);
   const [loading, setLoading] = useState(false);
@@ -24,7 +24,7 @@ export default function LogoColorPicker() {
     const formData = new FormData();
     formData.append("image", file);
 
-    const res = await fetch("/api/extract-colors", {
+    const res = await fetch("/api/cloudinary", {
       method: "POST",
       body: formData,
     });
