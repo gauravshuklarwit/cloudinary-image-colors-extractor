@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Image Colors Extractor",
-  description: "Extract colors from images using Cloudinary API",
+  description: "Extract colors from images using different APIs",
 };
 
 export default function RootLayout({
